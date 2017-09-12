@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 
 import { AuthService} from './auth.service';
-
+// import {AuthGuardService} from './auth-guard.service'; AuthGuardService
 
 import { routing } from './app.routing';
 import { AppComponent } from './app.component';
@@ -17,6 +17,8 @@ import { PostService } from './post.services';
 import { SigninComponent } from './admin/auth/signin/signin.component';
 import { SignoutComponent } from './admin/auth/signout/signout.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { AddUserComponent } from './admin/users/add-user/add-user.component';
+import { EditUserComponent } from './admin/users/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     PostComponent,
     SigninComponent,
     SignoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,11 @@ export class AllUsersComponent implements OnInit {
         );
     }
 
-    // onGetUsers() {
-    // }
+    delete(id: any){
+        var result = confirm('Ar you sure?');
+        if(result){
+            this.userService.deleteUser(id);
+        }
+    }
 
 }

@@ -5,12 +5,15 @@ import {DashboardComponent} from './admin/dashboard/dashboard.component';
 import {SigninComponent} from './admin/auth/signin/signin.component';
 import {SignoutComponent} from './admin/auth/signout/signout.component';
 import {AllPostsComponent} from './admin/posts/all-posts/all-posts.component';
+import {AddUserComponent} from "./admin/users/add-user/add-user.component";
 
 const APP_Routes:Routes = [
     {path: 'admin', component: SigninComponent},
     {path: 'admin/signout', component: SignoutComponent},
     {path: 'admin/dashboard', component: DashboardComponent},
     {path: 'admin/users', component: AllUsersComponent},
+    {path: 'admin/add-user', component: AddUserComponent},
+
     {path: 'admin/posts', component: AllPostsComponent}
 ];
 
