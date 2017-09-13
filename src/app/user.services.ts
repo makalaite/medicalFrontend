@@ -20,9 +20,10 @@ export class UserService {
                     return response.json().users;
                 });
     }
+
     getUser(id: any): Observable<any> {
         const token = this.authService.getToken();
-        return this.http.get('http://medicalbackend.dev/api/users' + id + '?token=' + token)
+        return this.http.get('http://medicalbackend.dev/api/users/' + id + '?token=' + token)
             .map(
                 (response: Response) => {
                     return response.json().user;
@@ -35,11 +36,9 @@ export class UserService {
                position: string,
                role_id: number,
                password: string,)
-
     {
         const token = this.authService.getToken();
         return this.http.post('http://medicalbackend.dev/api/users?token=' + token,
-
             {
                 first_name: first_name,
                 last_name: last_name,
@@ -68,6 +67,6 @@ export class UserService {
 
     deleteUser(id:any){
         const token = this.authService.getToken();
-        return this.http.delete('http://medicalbackend.dev/api/users' + id + '?token=' + token);
+        return this.http.delete('http://medicalbackend.dev/api/users/' + id + '?token=' + token);
     }
 }

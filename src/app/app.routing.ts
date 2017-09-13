@@ -15,7 +15,7 @@ const APP_Routes:Routes = [
     {path: 'admin/dashboard', component: DashboardComponent},
     {path: 'admin/users', component: AllUsersComponent},
     {path: 'admin/add-user', component: AddUserComponent},
-    {path: 'admin/edit-user', component: EditUserComponent, canActivate: [AuthGuardService]},
+    {path: 'admin/edit-user', component: EditUserComponent},
     {path: 'admin/posts', component: AllPostsComponent}
 ];
 

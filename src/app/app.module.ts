@@ -32,7 +32,8 @@ import { EditUserComponent } from './admin/users/edit-user/edit-user.component';
     SignoutComponent,
     DashboardComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -40,9 +41,8 @@ import { EditUserComponent } from './admin/users/edit-user/edit-user.component';
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-
   ],
-  providers: [UserService, PostService, AuthService],
+  providers: [UserService, PostService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
