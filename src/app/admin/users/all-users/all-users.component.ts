@@ -22,10 +22,19 @@ export class AllUsersComponent implements OnInit {
         );
     }
 
-    delete(id: any){
-        var result = confirm('Ar you sure?');
+    onDelete(user: any){
+        const result = confirm('Ar you sure?');
         if(result){
             this.userService.deleteUser(id);
+            const index = this.users.indexOf(user);
+            this.users.splice(index, 1);
+
+            this.userService.deleteUser(user.id).subscribe(null,
+                error => {
+                    alert('could not delete user.');
+                    this.users.splice(index, 0 , user);
+                }
+            )
         }
     }
 
