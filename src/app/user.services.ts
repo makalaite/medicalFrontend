@@ -3,6 +3,7 @@ import {Http, Response, Headers} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
 import {AuthService} from "./auth.service";
+import {User} from "./user.interface";
 
 
 @Injectable()
@@ -17,6 +18,14 @@ export class UserService {
             .map(
                 (response: Response) => {
                     return response.json().users;
+                });
+    }
+    getUser(id: any): Observable<any> {
+        const token = this.authService.getToken();
+        return this.http.get('http://medicalbackend.dev/api/users' + id + '?token=' + token)
+            .map(
+                (response: Response) => {
+                    return response.json().user;
                 });
     }
 
@@ -44,6 +53,16 @@ export class UserService {
             (response: Response) => {
                 return true;
             }
+        );
+    }
+
+    updateUser(user: User){
+        const token = this.authService.getToken();
+        return this.http.put('http://medicalbackend.dev/api/users' + user.id + '?token=' + token,
+            JSON.stringify(user),
+            {headers: new Headers({'Content-type': 'application/json'})}
+        ).map(
+            (response: Response) => response.json()
         );
     }
 

@@ -25,7 +25,7 @@ export class AllUsersComponent implements OnInit {
     onDelete(user: any){
         const result = confirm('Ar you sure?');
         if(result){
-            this.userService.deleteUser(id);
+            this.userService.deleteUser(user.id);
             const index = this.users.indexOf(user);
             this.users.splice(index, 1);
 
