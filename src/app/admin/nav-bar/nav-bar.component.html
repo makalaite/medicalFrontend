@@ -1,3 +1,8 @@
-<p>
-  nav-bar works!
-</p>
+<div class="container" *ngIf="isLoggedIn()">
+    <div class="row">
+        <a routerLink="admin/users">Users</a>
+        <a routerLink="admin/posts">Posts</a>
+        <a (click)="onLogout()" class="btn tbn-danger">Sign Out</a>
+
+    </div>
+</div>

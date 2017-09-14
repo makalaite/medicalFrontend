@@ -4,7 +4,7 @@
             Display {{ users.length }} <b>user(s).</b>
         </h4>
         <div class="add-button-top pull-right">
-            <button routerLink="../add-user" type="button" class="btn btn-success" name="button">Add user</button>
+            <button routerLink="/admin/users/new" type="button" class="btn btn-success" name="button">Add user</button>
         </div>
     </div>
     <div class="panel-body">
@@ -25,7 +25,7 @@
                 <td>{{user.email}}</td>
                 <td>{{user.position}}</td>
                 <td>
-                    <button [routerLink]="['../edit-user', {id:user.id}]">
+                    <button [routerLink]="['/admin/users', user.id]">
                         <span class="glyphicon glyphicon-edit"></span>
                     </button>
                     <button (click)="onDelete(user)" type="button" class="btn btn-danger btn-sm" name="button">

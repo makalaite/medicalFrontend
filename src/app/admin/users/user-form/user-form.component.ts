@@ -67,9 +67,9 @@ export class UserFormComponent implements OnInit {
         }
     }
 
-    onSave(){
+    onSave() {
         var result, user = this.form.value;
-        if (this.user.id){
+        if (this.user.id) {
             user.id = this.user.id;
             result = this.usersService.updateUser(user);
         } else {

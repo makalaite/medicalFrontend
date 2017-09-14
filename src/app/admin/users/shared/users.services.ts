@@ -34,7 +34,7 @@ export class UsersService {
     {
         const token = this.authService.getToken();
         return this.http.post('http://medicalbackend.dev/api/users?token=' + token,
-            {user},
+            user,
             {headers: new Headers({'X-Request-Width': 'XMLHttpRequest'})}
         ).map(
             (response: Response) => {
@@ -43,9 +43,9 @@ export class UsersService {
         );
     }
 
-    updateUser(user: User){
+    updateUser(user){
         const token = this.authService.getToken();
-        return this.http.put('http://medicalbackend.dev/api/users' + user.id + '?token=' + token,
+        return this.http.put('http://medicalbackend.dev/api/users/' + user.id + '?token=' + token,
             user,
             {headers: new Headers({'Content-type': 'application/json'})}
         ).map(
