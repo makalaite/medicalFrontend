@@ -12,6 +12,8 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {AdminModule} from "./admin/admin.module";
 import {adminRouting} from "./admin/admin.routing";
 import {UsersModule} from "./admin/users/users.module";
+import {postsRouting} from "./admin/posts/posts.routing";
+import {PostsModule} from "./admin/posts/posts.module";
 import {usersRouting} from "./admin/users/users.routing";
 
 
@@ -32,7 +34,9 @@ import {usersRouting} from "./admin/users/users.routing";
         AdminModule,
         adminRouting,
         UsersModule,
-        usersRouting
+        usersRouting, //??
+        PostsModule,
+        postsRouting,
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {Http, Response, Headers} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
-import {AuthService} from "./admin/auth.service";
-import {Post} from "./post.interface";
+import {AuthService} from "../../auth.service";
+import {Post} from "./post";
 
 
 @Injectable()
-export class PostService {
+export class PostsService {
     constructor(private http: Http, private authService: AuthService) {
 
     }

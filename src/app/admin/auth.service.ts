@@ -15,7 +15,7 @@ export class AuthService {
         return this.http.post('http://medicalbackend.dev/api/users/signin',
 
             {email: email, password: password},
-            {headers: new Headers({'X-Request-Width': 'XMLHttpRequest'})}
+            {headers: new Headers({'X-Requested-With': 'XMLHttpRequest'})}
         ).map(
             (response: Response) => {
                 const token = response.json().token;

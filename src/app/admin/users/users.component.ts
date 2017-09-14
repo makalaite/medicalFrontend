@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
     }
 
     onDelete(user){
-        if (confirm('Ar you sure you want to delete?' + user.first_name + '?')){
+        if (confirm('Ar you sure you want to delete' + user.first_name + '?')){
 
             var index = this.users.indexOf(user);
             this.users.splice(index, 1);
