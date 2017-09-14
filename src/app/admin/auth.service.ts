@@ -3,11 +3,12 @@ import {Http, Headers, Response} from "@angular/http";
 
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
+import {Router} from "@angular/router";
 
 
 @Injectable()
 export class AuthService {
-    constructor(private http: Http) {
+    constructor(private http: Http, private router: Router) {
     }
 
     signin(email: string, password: string) {
@@ -36,6 +37,11 @@ export class AuthService {
             return true;
         }
         return false;
+    }
+
+    logout(){
+        localStorage.removeItem('token');
+        this.router.navigate(['admin/login']);
     }
 }
 

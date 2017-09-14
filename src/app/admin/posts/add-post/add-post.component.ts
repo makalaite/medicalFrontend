@@ -17,11 +17,10 @@ export class AddPostComponent implements OnInit {
 
   onCreate(form: NgForm){
     this.postService.createPost(
-        form.value.user_id,
         form.value.title,
         form.value.text,
     ).subscribe(
-        response => this.router.navigate(['admin/post'])
+        response => this.router.navigate(['admin/posts'])
     )
   }
 }

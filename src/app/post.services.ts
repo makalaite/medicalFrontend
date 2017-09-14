@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response, Headers} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
-import {AuthService} from "./auth.service";
+import {AuthService} from "./admin/auth.service";
 import {Post} from "./post.interface";
 
 
@@ -29,20 +29,18 @@ export class PostService {
                 });
     }
 
-    createPost(user_id: string,
-               title: string,
+    createPost(title: string,
                text: string) {
         const token = this.authService.getToken();
         return this.http.post('http://medicalbackend.dev/api/posts?token=' + token,
             {
-                user_id: user_id,
                 title: title,
                 text: text
             },
             {headers: new Headers({'X-Request-Width': 'XMLHttpRequest'})}
         ).map(
             (response: Response) => {
-                return true;
+                return response.json().post;
             }
         )
     }
