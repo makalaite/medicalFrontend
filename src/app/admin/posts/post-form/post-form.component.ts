@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {PostsService} from "../shared/posts.service";
+import {PostsService} from "../shared/posts.services";
 import {Post} from "../shared/post";
 
 @Component({

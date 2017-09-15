@@ -15,6 +15,7 @@ import {UsersModule} from "./admin/users/users.module";
 import {postsRouting} from "./admin/posts/posts.routing";
 import {PostsModule} from "./admin/posts/posts.module";
 import {usersRouting} from "./admin/users/users.routing";
+import { RolesComponent } from './admin/roles/roles.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {usersRouting} from "./admin/users/users.routing";
         AppComponent,
         HomeComponent,
         NotFoundComponent,
+        RolesComponent,
 
 
     ],

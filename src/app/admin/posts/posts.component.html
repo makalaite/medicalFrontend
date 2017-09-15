@@ -1,8 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4>Posts</h4>
+    <h4>
+      Display {{ posts.length }} <b>post(s).</b>
+    </h4>
     <div class="add-button-top pull-right">
-      <button type="button" class="btn btn-default" routerLink="../add-post" name="button">Add post</button>
+      <button routerLink="/admin/posts/new" type="button" class="btn btn-default" name="button">Add post</button>
     </div>
   </div>
   <div class="panel-body">
@@ -12,17 +14,21 @@
       <tr>
         <th>Title</th>
         <th>Text</th>
-        <th>User_id</th>
+        <th>User name</th>
       </tr>
       <tr *ngFor="let post of posts">
         <td>{{post.title}}</td>
         <td>{{post.text}}</td>
         <td>{{post.user_id}}</td>
         <td>
-          <button [routerLink]="['../edit-post', {id:post.id}]">Edit</button>
+          <button [routerLink]="['/admin/posts', post.id]">
+            <span class="glyphicon glyphicon-edit"></span>
+          </button>
         </td>
         <td>
-          <button (click)="onDelete(post)">Delete</button>
+          <button (click)="onDelete(post)">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
         </td>
     </table>
   </div>

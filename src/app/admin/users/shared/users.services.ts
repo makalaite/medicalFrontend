@@ -6,6 +6,7 @@ import {AuthService} from "../../auth.service";
 import {User} from "./user";
 
 
+
 @Injectable()
 export class UsersService {
     constructor(private http: Http, private authService: AuthService) {
@@ -35,7 +36,7 @@ export class UsersService {
         const token = this.authService.getToken();
         return this.http.post('http://medicalbackend.dev/api/users?token=' + token,
             user,
-            {headers: new Headers({'X-Request-Width': 'XMLHttpRequest'})}
+            {headers: new Headers({'X-Requested-With': 'XMLHttpRequest'})}
         ).map(
             (response: Response) => {
                 return true;

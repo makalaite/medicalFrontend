@@ -29,15 +29,11 @@ export class PostsService {
                 });
     }
 
-    createPost(title: string,
-               text: string) {
+    createPost(post) {
         const token = this.authService.getToken();
         return this.http.post('http://medicalbackend.dev/api/posts?token=' + token,
-            {
-                title: title,
-                text: text
-            },
-            {headers: new Headers({'X-Request-Width': 'XMLHttpRequest'})}
+            post,
+            {headers: new Headers({'X-Requested-With': 'XMLHttpRequest'})}
         ).map(
             (response: Response) => {
                 return response.json().post;
@@ -45,10 +41,10 @@ export class PostsService {
         )
     }
 
-    updatePost(post: Post){
+    updatePost(post){
         const token = this.authService.getToken();
-        return this.http.put('http://medicalbackend.dev/api/posts' + post.id + '?token=' + token,
-            JSON.stringify(post),
+        return this.http.put('http://medicalbackend.dev/api/posts/' + post.id + '?token=' + token,
+            post,
             {headers: new Headers({'Content-type': 'application/json'})}
         ).map(
             (response: Response) => response.json()
