@@ -21,6 +21,8 @@ import {MultiselectDropdownModule} from "angular-2-dropdown-multiselect";
 import {BlogModule} from "./blog/blog.module";
 import {blogRouting} from "./blog/blog.routing";
 import { NavbarClientComponent } from './navbar-client/navbar-client.component';
+import { AboutComponent } from './about/about.component';
+import {BlogPostComponent} from "./blog/blog-post/blog-post.component";
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { NavbarClientComponent } from './navbar-client/navbar-client.component';
         HomeComponent,
         NotFoundComponent,
         NavbarClientComponent,
+        AboutComponent,
+        BlogPostComponent
 
     ],
     imports: [
