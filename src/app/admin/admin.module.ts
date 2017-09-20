@@ -9,6 +9,8 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {AuthService} from "./auth.service";
 import {AuthGuardService} from "./auth-guard.service";
 import {SigninComponent} from "./auth/signin/signin.component";
+import { BlogComponent } from '../blog/blog.component';
+import { BlogPostComponent } from '../blog/blog-post/blog-post.component';
 
 @NgModule({
     imports: [

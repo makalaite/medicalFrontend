@@ -15,9 +15,12 @@ import {UsersModule} from "./admin/users/users.module";
 import {postsRouting} from "./admin/posts/posts.routing";
 import {PostsModule} from "./admin/posts/posts.module";
 import {usersRouting} from "./admin/users/users.routing";
-import { RolesComponent } from './admin/roles/roles.component';
 import {rolesRouting} from "./admin/roles/roles.routing";
 import {RolesModule} from "./admin/roles/roles.module";
+import {MultiselectDropdownModule} from "angular-2-dropdown-multiselect";
+import {BlogModule} from "./blog/blog.module";
+import {blogRouting} from "./blog/blog.routing";
+import { NavbarClientComponent } from './navbar-client/navbar-client.component';
 
 
 @NgModule({
@@ -25,8 +28,7 @@ import {RolesModule} from "./admin/roles/roles.module";
         AppComponent,
         HomeComponent,
         NotFoundComponent,
-        RolesComponent,
-
+        NavbarClientComponent,
 
     ],
     imports: [
@@ -43,6 +45,9 @@ import {RolesModule} from "./admin/roles/roles.module";
         postsRouting,
         rolesRouting,
         RolesModule,
+        MultiselectDropdownModule,
+        BlogModule,
+        blogRouting,
     ],
     providers: [],
     bootstrap: [AppComponent]

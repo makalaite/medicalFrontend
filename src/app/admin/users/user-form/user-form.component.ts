@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, FormsModule} from "@angular/forms";
 import {User} from "../shared/user";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UsersService} from "../shared/users.services";
+import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
+import {Role} from "../../roles/shared/role";
+import {RolesService} from "../../roles/shared/roles.services";
 
 @Component({
     selector: 'app-user-form',
@@ -14,12 +17,16 @@ export class UserFormComponent implements OnInit {
     form: FormGroup;
     title: string;
     user: User = new User();
+
+    userRoles: string[] = [];
+    roles: Role[] = [];
     showPassword: boolean = false;
 
     constructor(formBuilder: FormBuilder,
                 private router: Router,
                 private activatedRoute: ActivatedRoute,
-                private usersService: UsersService) {
+                private usersService: UsersService,
+                private rolesService: RolesService) {
         this.form = formBuilder.group({
             first_name: ['', [
                 Validators.required,
@@ -36,7 +43,7 @@ export class UserFormComponent implements OnInit {
             email: ['', [
                 Validators.required
             ]],
-            role_id: [''],
+            roles: [''],
             password: ['', [
                 Validators.required
             ]]
@@ -46,6 +53,14 @@ export class UserFormComponent implements OnInit {
     // kai uzsikrauna komponentas (konstruktorius suveikia pirmas, sitas antroj stadijoj) kviecia componento funkcija
 
     ngOnInit() {
+
+        this.rolesService.getRoles().subscribe(
+            roles => {
+                this.roles = roles;
+            },
+            (error: Response) => console.log(error)
+        );
+
         var id = this.activatedRoute.params.subscribe(params => {
             var id = params['id'];
             this.title = id ? 'Edit User' : 'New User';
@@ -54,7 +69,12 @@ export class UserFormComponent implements OnInit {
                 return;
 
             this.usersService.getUser(id).subscribe(
-                user => this.user = user,
+                user => {
+                    this.user = user;
+                    for (var i = 0, length = this.user.roles.length; i < length; i++) {
+                        this.userRoles.push(this.user.roles[i].id.toString());
+                    }
+                },
                 response => {
                     if (response.status == 404) {
                         this.router.navigate(['NotFound']);
@@ -65,6 +85,10 @@ export class UserFormComponent implements OnInit {
         if (this.router.url === '/admin/users/new') {
             this.showPassword = true;
         }
+    }
+
+    onChange(event:any){
+        console.log(event);
     }
 
     onSave() {
