@@ -15,10 +15,8 @@ export class NavBarComponent implements OnInit {
     }
 
     isLoggedIn() {
-        if (localStorage.getItem('token')) {
-            return true;
-        }
-        return false;
+
+        return this.authService.isLoggedIn();
 
     }
 
