@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BlogService} from "./shared/blog.services";
 import {Post} from "../admin/posts/shared/post";
+import {Blog} from "./shared/blog";
 
 @Component({
   selector: 'app-blog',
@@ -9,7 +10,7 @@ import {Post} from "../admin/posts/shared/post";
 })
 export class BlogComponent implements OnInit {
 
-  private posts: Post[] = [];
+  private posts: Blog[] = [];
 
   constructor(private blogService: BlogService) { }
 
