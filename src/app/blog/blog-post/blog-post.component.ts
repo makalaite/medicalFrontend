@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BlogService} from "../shared/blog.services";
-import {Post} from "../../admin/posts/shared/post";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Blog} from "../shared/blog";
 
 @Component({
     selector: 'app-blog-post',
@@ -12,7 +12,7 @@ export class BlogPostComponent implements OnInit {
 
     title: string;
 
-    post: Post = new Post();
+    post: Blog = new Blog();
 
     constructor(private blogService: BlogService,
     private router: Router,
