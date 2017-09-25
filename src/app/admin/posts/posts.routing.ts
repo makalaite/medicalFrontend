@@ -5,9 +5,14 @@ import {PostsComponent} from "./posts.component";
 
 
 const postsRoutes: Routes = [
-    {path: 'admin/posts', component: PostsComponent, pathMatch: 'full', canActivate: [AuthGuardService]},
-    {path: 'admin/posts/new', component: PostFormComponent, canActivate: [AuthGuardService]},
-    {path: 'admin/posts/:id', component: PostFormComponent, canActivate: [AuthGuardService]},
+    {
+        path: 'admin/posts', component: PostsComponent,
+        children: [
+            {path: 'admin/posts/new', component: PostFormComponent},
+            {path: 'admin/posts/:id', component: PostFormComponent},
+        ],
+        canActivate: [AuthGuardService]
+    },
 ];
 
 export const postsRouting = RouterModule.forChild(postsRoutes);

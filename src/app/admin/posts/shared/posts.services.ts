@@ -4,17 +4,21 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs';
 import {AuthService} from "../../auth.service";
 import {Post} from "./post";
-
+import {GlobalVariable} from '../../../config/global';
 
 @Injectable()
 export class PostsService {
+
+    private baseApiUrl = GlobalVariable.BASE_API_URL;
+
     constructor(private http: Http, private authService: AuthService) {
 
     }
+// "any" stands for domain which this app communicates with, safety reasons
 
     getPosts(): Observable<any> {
         const token = this.authService.getToken();
-        return this.http.get('http://medicalbackend.dev/api/posts?token=' + token)
+        return this.http.get(this.baseApiUrl + 'posts?token=' + token)
             .map(
                 (response: Response) => {
                     return response.json().posts;
@@ -22,7 +26,7 @@ export class PostsService {
     }
     getPost(id: any): Observable<any> {
         const token = this.authService.getToken();
-        return this.http.get('http://medicalbackend.dev/api/posts/' + id+ '?token=' + token)
+        return this.http.get(this.baseApiUrl + 'posts/' + id + '?token=' + token)
             .map(
                 (response: Response) => {
                     return response.json().post;
@@ -31,7 +35,7 @@ export class PostsService {
 
     createPost(post) {
         const token = this.authService.getToken();
-        return this.http.post('http://medicalbackend.dev/api/posts?token=' + token,
+        return this.http.post(this.baseApiUrl + 'posts?token=' + token,
             post,
             {headers: new Headers({'X-Requested-With': 'XMLHttpRequest'})}
         ).map(
@@ -43,7 +47,7 @@ export class PostsService {
 
     updatePost(post){
         const token = this.authService.getToken();
-        return this.http.put('http://medicalbackend.dev/api/posts/' + post.id + '?token=' + token,
+        return this.http.put(this.baseApiUrl + 'posts/' + post.id + '?token=' + token,
             post,
             {headers: new Headers({'Content-type': 'application/json'})}
         ).map(
@@ -53,6 +57,6 @@ export class PostsService {
 
     deletePost(id:any){
         const token = this.authService.getToken();
-        return this.http.delete('http://medicalbackend.dev/api/posts/' + id + '?token=' + token);
+        return this.http.delete(this.baseApiUrl + 'posts/' + id + '?token=' + token);
     }
 }

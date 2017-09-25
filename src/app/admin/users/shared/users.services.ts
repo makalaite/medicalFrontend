@@ -4,18 +4,21 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs';
 import {AuthService} from "../../auth.service";
 import {User} from "./user";
-
+import {GlobalVariable} from '../../../config/global';
 
 
 @Injectable()
 export class UsersService {
+
+    private baseApiUrl = GlobalVariable.BASE_API_URL;
+
     constructor(private http: Http, private authService: AuthService) {
 
     }
 
     getUsers(): Observable<any> {
         const token = this.authService.getToken();
-        return this.http.get('http://medicalbackend.dev/api/users?token=' + token)
+        return this.http.get(this.baseApiUrl + 'users?token=' + token)
             .map(
                 (response: Response) => {
                     return response.json().users;
@@ -24,7 +27,7 @@ export class UsersService {
 
     getUser(id: any): Observable<any> {
         const token = this.authService.getToken();
-        return this.http.get('http://medicalbackend.dev/api/users/' + id + '?token=' + token)
+        return this.http.get(this.baseApiUrl +  'users/' + id + '?token=' + token)
             .map(
                 (response: Response) => {
                     return response.json().user;
@@ -34,7 +37,7 @@ export class UsersService {
     createUser(user)
     {
         const token = this.authService.getToken();
-        return this.http.post('http://medicalbackend.dev/api/users?token=' + token,
+        return this.http.post(this.baseApiUrl + 'users?token=' + token,
             user,
             {headers: new Headers({'X-Requested-With': 'XMLHttpRequest'})}
         ).map(
@@ -46,7 +49,7 @@ export class UsersService {
 
     updateUser(user){
         const token = this.authService.getToken();
-        return this.http.put('http://medicalbackend.dev/api/users/' + user.id + '?token=' + token,
+        return this.http.put(this.baseApiUrl + 'users/' + user.id + '?token=' + token,
             user,
             {headers: new Headers({'Content-type': 'application/json'})}
         ).map(
@@ -56,6 +59,6 @@ export class UsersService {
 
     deleteUser(id:any){
         const token = this.authService.getToken();
-        return this.http.delete('http://medicalbackend.dev/api/users/' + id + '?token=' + token);
+        return this.http.delete(this.baseApiUrl + 'users/' + id + '?token=' + token);
     }
 }

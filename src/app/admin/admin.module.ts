@@ -11,6 +11,8 @@ import {AuthGuardService} from "./auth-guard.service";
 import {SigninComponent} from "./auth/signin/signin.component";
 import { BlogComponent } from '../blog/blog.component';
 import { BlogPostComponent } from '../blog/blog-post/blog-post.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { CalendarComponent } from './schedule/calendar/calendar.component';
 
 @NgModule({
     imports: [
@@ -24,6 +26,8 @@ import { BlogPostComponent } from '../blog/blog-post/blog-post.component';
         NavBarComponent,
         SigninComponent,
         DashboardComponent,
+        ScheduleComponent,
+        CalendarComponent,
     ],
     exports: [
         NavBarComponent, SigninComponent

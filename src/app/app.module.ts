@@ -23,6 +23,7 @@ import {blogRouting} from "./blog/blog.routing";
 import { NavbarClientComponent } from './navbar-client/navbar-client.component';
 import { AboutComponent } from './about/about.component';
 import {BlogPostComponent} from "./blog/blog-post/blog-post.component";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {BlogPostComponent} from "./blog/blog-post/blog-post.component";
         MultiselectDropdownModule,
         BlogModule,
         blogRouting,
+        BrowserAnimationsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

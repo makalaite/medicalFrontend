@@ -3,16 +3,20 @@ import {Http, Response, Headers} from "@angular/http";
 import {AuthService} from "../../auth.service";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/Rx';
+import {GlobalVariable} from "../../../config/global";
 
 @Injectable()
 export class RolesService {
+
+    private baseApiUrl = GlobalVariable.BASE_API_URL;
+
     constructor(private http: Http, private authService: AuthService) {
 
     }
 
     getRoles(): Observable<any> {
         const token = this.authService.getToken();
-        return this.http.get('http://medicalbackend.dev/api/roles?token=' + token)
+        return this.http.get(this.baseApiUrl + 'roles?token=' + token)
             .map(
                 (response: Response) => {
                     return response.json().roles;
@@ -21,7 +25,7 @@ export class RolesService {
 
     getRole(id: any): Observable<any> {
         const token = this.authService.getToken();
-        return this.http.get('http://medicalbackend.dev/api/roles/' + id + '?token=' + token)
+        return this.http.get(this.baseApiUrl + 'roles/' + id + '?token=' + token)
             .map(
                 (response: Response) => {
                     return response.json().role;
@@ -31,7 +35,7 @@ export class RolesService {
     createRole(role)
     {
         const token = this.authService.getToken();
-        return this.http.post('http://medicalbackend.dev/api/roles?token=' + token,
+        return this.http.post(this.baseApiUrl + 'roles?token=' + token,
             role,
             {headers: new Headers({'X-Requested-With': 'XMLHttpRequest'})}
         ).map(
@@ -43,7 +47,7 @@ export class RolesService {
 
     updateRole(role){
         const token = this.authService.getToken();
-        return this.http.put('http://medicalbackend.dev/api/roles/' + role.id + '?token=' + token,
+        return this.http.put(this.baseApiUrl + 'roles/' + role.id + '?token=' + token,
             role,
             {headers: new Headers({'Content-type': 'application/json'})}
         ).map(
@@ -53,6 +57,6 @@ export class RolesService {
 
     deleteRole(id:any){
         const token = this.authService.getToken();
-        return this.http.delete('http://medicalbackend.dev/api/roles/' + id + '?token=' + token);
+        return this.http.delete(this.baseApiUrl + 'roles/' + id + '?token=' + token);
     }
 }
